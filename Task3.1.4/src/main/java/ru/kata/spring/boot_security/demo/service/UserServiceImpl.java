@@ -16,7 +16,7 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private final UserRepository userRepository;
+        private final UserRepository userRepository;
 
     private final RoleRepository roleRepository;
 
@@ -26,7 +26,6 @@ public class UserServiceImpl implements UserService {
         this.roleRepository = roleRepository;
 
     }
-
 
     @Transactional
     public void saveUser(User user) {
@@ -45,12 +44,12 @@ public class UserServiceImpl implements UserService {
         return userRepository.getById(id);
     }
 
+    @Override
     @Transactional
-    public void updateUser(User user, Long id) {
+    public void updateUser(User user) {
         user.setRoles(user.getRoles());
         userRepository.save(user);
     }
-
 
     @Transactional
     public void deleteUser(Long id) {
@@ -59,17 +58,16 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional(readOnly = true)
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = findByUsername(username);
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        User user = findByEmail(email);
         if (user == null) {
             throw new UsernameNotFoundException("User not found");
         }
         return user;
     }
-
     @Transactional(readOnly = true)
-    public User findByUsername(String username) {
-        return userRepository.findByUsername(username);
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 
 }
