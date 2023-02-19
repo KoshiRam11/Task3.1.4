@@ -45,14 +45,11 @@ public class UserServiceImpl implements UserService {
         return userRepository.getById(id);
     }
 
-    @Override
     @Transactional
-    public void updateUser(User user) {
+    public void updateUser(User user, Long id) {
         user.setRoles(user.getRoles());
         userRepository.save(user);
     }
-
-
 
 
     @Transactional
