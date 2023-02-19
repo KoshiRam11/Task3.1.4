@@ -10,7 +10,7 @@ public interface UserService  extends UserDetailsService {
     public List<User> listUsers();
     public User getUser(Long id);
 
-    public void updateUser(User user, Long id);
+    public void updateUser(User user);
 
     public void deleteUser(Long id);
 }

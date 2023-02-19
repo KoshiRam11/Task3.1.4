@@ -85,13 +85,12 @@
                                                     <button type="button"
                                                             class="btn btn-success btn btn-info modal-open"
                                                             data-toggle="modal"
-                                                            th:data-target="${'#modalEdit' + user.getId()}">
+                                                            th:data-target="${'#editForm' + user.getId()}">
                                                         Edit
                                                     </button>
                                                 </td>
-                                                <div class="modal fade" th:id="${'modalEdit' + user.getId()}"
-                                                     tabindex="-1" role="dialog"
-                                                     aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                                <div class="modal fade" th:id="'editForm' + ${user.getId()}"
+                                                     tabindex="-1"  aria-hidden="true">
                                                     <form th:action="@{/admin/admin/{id}/update (id=${user.getId()})}"
                                                           th:object="${user}" th:method="PATCH">
                                                         <div class="modal-dialog" role="document">
@@ -106,31 +105,30 @@
                                                                     <div class="form-group ">
                                                                         <label>ID</label>
                                                                         <input disabled type="text" class="form-control"
-                                                                               th:value="${user.getId()}" name="id"/>
+                                                                               th:value="${user.id}" name="id"/>
                                                                         <br/>
                                                                         <label>First name</label>
                                                                         <input type="text" class="form-control"
-                                                                               th:value="${user.getName()}"
-                                                                               name="name"/>
+                                                                               th:value="${user.name}" name="username"/>
                                                                         <br/>
                                                                         <label>Last name</label>
                                                                         <input type="text" class="form-control"
-                                                                               th:value="${user.getLastname()}"
+                                                                               th:value="${user.lastname}"
                                                                                name="lastname"/>
                                                                         <br/>
                                                                         <label>Age</label>
                                                                         <input type="number" class="form-control"
-                                                                               th:value="${user.getAge()}" name="age"/>
+                                                                               th:value="${user.age}" name="age"/>
                                                                         <br/>
                                                                         <label>Email</label>
                                                                         <input type="email" class="form-control"
-                                                                               th:value="${user.getEmail()}"
+                                                                               th:value="${user.email}"
                                                                                name="email"/>
                                                                         <br/>
                                                                         <label>Password</label>
                                                                         <br/>
                                                                         <input type="password" class="form-control"
-                                                                               th:value="${user.getPassword()}"
+                                                                               th:value="${user.password}"
                                                                                name="password"/>
                                                                         <br/>
                                                                         <label>Роль доступа</label>
@@ -149,13 +147,16 @@
                                                                     <button type="button" class="btn btn-secondary"
                                                                             data-dismiss="modal">Close
                                                                     </button>
-                                                                    <input type="submit" class="btn btn-primary"
-                                                                           value="Edit"/>
+                                                                    <button type="submit" class="btn btn-primary" value="Edit" th:value="'editForm' + ${user.getId()}">Edit
+                                                                    </button>
+<!--                                                                    <input type="submit" class="btn btn-primary"-->
+<!--                                                                           value="Edit"/>-->
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </form>
                                                 </div>
+
                                                 <td>
                                                     <button type="button"
                                                             class="btn btn-success btn btn-danger modal-open"
@@ -164,7 +165,7 @@
                                                         Delete
                                                     </button>
                                                 </td>
-                                                <div class="modal fade" th:id="${'modalDelete' + user.getId()}"
+                                                <div class="modal fade" th:id="${'modalDelete' + user.getId()}"-->
                                                      tabindex="-1" role="dialog"
                                                      aria-labelledby="deleteModalLabel" aria-hidden="true">
                                                     <form th:action="@{/admin/admin/{id}/delete (id=${user.getId()})}"
@@ -182,32 +183,30 @@
                                                                         <strong><label>ID</label></strong>
                                                                         <br/>
                                                                         <input disabled type="text" class="form-control"
-                                                                               th:value="${user.getId()}" name="id1"/>
+                                                                               th:value="${user.getId()}" name="id"/>
                                                                         <br/>
                                                                         <strong><label>First name</label></strong>
-                                                                        <br/>
                                                                         <input disabled type="text" class="form-control"
-                                                                               th:value="${user.getName()}"
-                                                                               name="name1"/>
+                                                                               th:value="${user.getName()}" name="username"/>
                                                                         <br/>
                                                                         <strong><label>Last name</label></strong>
                                                                         <br/>
                                                                         <input disabled type="text" class="form-control"
                                                                                th:value="${user.getLastname()}"
-                                                                               name="surname1"/>
+                                                                               name="lastname"/>
                                                                         <br/>
                                                                         <strong><label>Age</label></strong>
                                                                         <br/>
                                                                         <input disabled type="number"
                                                                                class="form-control"
-                                                                               th:value="${user.getAge()}" name="age1"/>
+                                                                               th:value="${user.getAge()}" name="age"/>
                                                                         <br/>
                                                                         <strong><label>Email</label></strong>
                                                                         <br/>
                                                                         <input disabled type="email"
                                                                                class="form-control"
                                                                                th:value="${user.getEmail()}"
-                                                                               name="email1"/>
+                                                                               name="email"/>
                                                                         <br/>
                                                                         <strong><label>Роль доступа</label></strong>
                                                                         <br/>

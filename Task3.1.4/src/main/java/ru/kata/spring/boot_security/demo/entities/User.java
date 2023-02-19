@@ -39,13 +39,11 @@ public class User implements UserDetails {
     )
     private Set<Role> roles;
 
-
-
     public User() {}
 
 
 
-    public User(String username, String lastName, int age, String email, String password) {
+    public User(String username, String lastname, int age, String email, String password) {
         this.username = username;
         this.email = email;
         this.password = password;
@@ -114,7 +112,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return null;
+        return username;
     }
 
 
